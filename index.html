@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LEAP: a Spider-Verse-style short made in Blender by an AI agent</title>
+<meta name="description" content="How a 95-second Spider-Verse-style short film was built entirely in Blender 5 by Claude, directed by Dror Lazar. Concept, look-dev, rigging, animation, sound, review loops and every cut along the way.">
+<meta property="og:title" content="LEAP: concept to final cut">
+<meta property="og:description" content="A 95-second Spider-Verse-style short, built in Blender 5 by an AI agent. Every frame from a Python build. See how it was made.">
+<meta property="og:image" content="media/stills/og.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0e0820">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230e0820'/%3E%3Ctext x='32' y='47' font-family='Impact,sans-serif' font-size='40' text-anchor='middle' fill='%23ff2e88'%3EL%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="top">
+  <a class="logo" href="#top">LEAP</a>
+  <div class="links">
+    <a href="#film">Film</a>
+    <a href="#making">Making of</a>
+    <a href="#evolution">Evolution</a>
+    <a href="#lessons">Lessons</a>
+    <a href="journal.html" class="pill">Full journal</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-bg" style="background-image:url(media/stills/f_78.webp)"></div>
+  <div class="hero-in">
+    <div class="kicker">A short film · Blender 5 · built by an AI agent</div>
+    <h1>LEAP</h1>
+    <p class="lede">A 95-second Spider-Verse-style short. Every frame comes out of one Python build in Blender. No AI-generated video. Here is the whole path from the first look test to the final cut, mistakes included.</p>
+    <div class="cta-row">
+      <a class="cta" href="#film">▶ Watch the film</a>
+      <a class="ghost" href="#making">See how it was made</a>
+    </div>
+    <div class="credit">Directed by <b>Dror Lazar</b> · Built by <b>Claude</b> (Anthropic) in Claude Code</div>
+  </div>
+</header>
+
+<main>
+
+<section id="film" class="film">
+  <div class="screen">
+    <video id="final" controls playsinline preload="metadata" poster="media/stills/f_66.webp" src="media/video/v13/leap_v13_i16_720p.mp4"></video>
+  </div>
+  <p class="cap">LEAP, V1.3 iteration 16 · 1280×720 · 24 fps · sound on</p>
+
+  <div class="stats">
+    <div><b>95 s</b><span>runtime</span></div>
+    <div><b>2,280</b><span>frames rendered</span></div>
+    <div><b>16</b><span>shots</span></div>
+    <div><b>292</b><span>sound cues</span></div>
+    <div><b>16</b><span>review iterations in V1.3</span></div>
+    <div><b>0</b><span>AI-generated video frames</span></div>
+  </div>
+</section>
+
+<section class="story">
+  <div class="sh">
+    <span class="num">00</span>
+    <h2>The story</h2>
+  </div>
+  <p class="big">Six days into being a hero, <b class="y">KITE</b> has to stop the <b class="g">GLITCH</b>, a voxel creature from a torn sky that drains the colour out of every street it touches, before it reaches the tallest tower.</p>
+  <p>Kite narrates, the way Miles does in the films. The colour arc carries the plot: a saturated neon city, a drained blue-violet page when the Glitch lands, and the colour flooding back after the final punch. It was rewritten twice. The first version, a 60-second chase written overnight, had no story to follow. Dror's notes on it started the V1 rebuild.</p>
+</section>
+
+<section id="making">
+  <div class="sh">
+    <span class="num">01</span>
+    <h2>The look</h2>
+  </div>
+  <p>Before anything moved, one frame had to read as a comic panel. The style lives in a shared shader library: toon bands from <code>Shader-to-RGB</code>, screen-space Ben-Day dots that grow in the shadows, hatching, a hard rim light, Grease Pencil Line Art for the ink, and a chromatic print offset in the compositor.</p>
+  <div class="grid g3">
+    <figure><img src="media/renders/progress/003_lookdev_first_city.webp" alt="First city look test" loading="lazy"><figcaption><span class="bad">First try</span> Too many lit windows, no visible ink, the hero gets lost.</figcaption></figure>
+    <figure><img src="media/renders/progress/001_lookdev_swing.webp" alt="The style frame" loading="lazy"><figcaption><span class="good">The look lands</span> The style frame the first version was built on.</figcaption></figure>
+    <figure><img src="media/renders/progress/002_lookdev_hero_closeup.webp" alt="Close-up crop of dots, hatching and ink" loading="lazy"><figcaption>Close-up crop: dots, hatching, ink line and print offset.</figcaption></figure>
+  </div>
+  <p class="note">The look kept changing all the way to the end. Look passes 2 to 4 in V1.3 halved the halftone, pulled saturation down about 9%, and gave the Glitch an acid-green ramp so the two characters separate from the violet city by value as well as by hue.</p>
+  <div class="grid g2">
+    <figure><img src="media/renders/progress/v13_look2_i11_a.webp" alt="Look pass 2 before and after" loading="lazy"><figcaption>Look pass 2: before / after.</figcaption></figure>
+    <figure><img src="media/renders/progress/v13_look3_i11_a.webp" alt="Look pass 3, i12 vs i13" loading="lazy"><figcaption>Look pass 3: i12 vs i13 on the Glitch shots.</figcaption></figure>
+  </div>
+</section>
+
+<section>
+  <div class="sh">
+    <span class="num">02</span>
+    <h2>The hero</h2>
+  </div>
+  <p>The first hero was made of rigid ellipsoids per bone. It read as a wooden mannequin, and Dror's note was simply that it looked cheap. So the hero became <b class="y">KITE</b>, an original character: mustard bomber jacket (the only yellow in the film, so the eye always finds Kite), black suit with cyan lines, magenta wrist launchers, white lenses.</p>
+  <ol class="steps">
+    <li><b>Concept</b> A front A-pose sheet, drawn for image-to-3D.</li>
+    <li><b>Tripo v3.1</b> image-to-3D gave a clean model: 2M faces, decimated to 127k.</li>
+    <li><b>Rigged by hand</b> Tripo's auto-rigger treated Kite as a generic creature, so the skeleton was fitted from mesh cross-sections and skinned with bone heat.</li>
+    <li><b>V1 look</b> Bold ink outline, colour-shifted cel bands and a coloured rim. The dark hatching was dropped.</li>
+  </ol>
+  <div class="grid g4 tall">
+    <figure><img src="media/renders/progress/004_mannequin_fused.webp" alt="Mannequin hero" loading="lazy"><figcaption><span class="bad">V0</span> The mannequin.</figcaption></figure>
+    <figure><img src="media/renders/progress/013_kite_concept.webp" alt="KITE concept" loading="lazy"><figcaption>KITE concept.</figcaption></figure>
+    <figure><img src="media/renders/progress/015_kite_tripo.webp" alt="Tripo model" loading="lazy"><figcaption>Tripo image-to-3D.</figcaption></figure>
+    <figure><img src="media/renders/progress/016_kite_rigged_poses.webp" alt="Rigged poses" loading="lazy"><figcaption>Rigged and toon-shaded.</figcaption></figure>
+  </div>
+  <figure class="wide"><img src="media/renders/progress/v1_hero_002_look_before_after.webp" alt="Hero look V0 vs V1" loading="lazy"><figcaption>Hero look: V0 (top) vs V1 (bottom).</figcaption></figure>
+</section>
+
+<section>
+  <div class="sh">
+    <span class="num">03</span>
+    <h2>The Glitch &amp; the city</h2>
+  </div>
+  <p>V0's villain was a cloud of 150 cubes nobody could read. The <b class="g">GLITCH</b> became a rigged voxel kaiju: a smooth skinned mesh that Geometry Nodes turn into cubes every frame, so it deforms like a creature but always reads as pixels. It also shatters.</p>
+  <div class="grid g3">
+    <figure><img src="media/renders/progress/v1_glitch_001_views.webp" alt="Glitch turnaround" loading="lazy"><figcaption>Turnaround and jaw.</figcaption></figure>
+    <figure><img src="media/renders/progress/v1_glitch_003_roar.webp" alt="Glitch roar" loading="lazy"><figcaption>Roar, animated on twos.</figcaption></figure>
+    <figure><img src="media/renders/progress/v1_glitch_010_shatter.webp" alt="Glitch shatter" loading="lazy"><figcaption>Shatter.</figcaption></figure>
+  </div>
+  <p>The city went from boxes with nothing moving to a kit with storefronts, fire escapes, an el-train, a spire at the end of the avenue and 473 driving cars. Shots were then staged on the real map: the perch, the billboard gag, the rift and the tower all have fixed coordinates.</p>
+  <div class="grid g3">
+    <figure><img src="media/renders/progress/v1_city_001_aerial_crane.webp" alt="Aerial city" loading="lazy"><figcaption>Aerial, the cold-open crane.</figcaption></figure>
+    <figure><img src="media/renders/progress/v1_city_011_street_drain_r60.webp" alt="Colour drain" loading="lazy"><figcaption>The colour drain at street level.</figcaption></figure>
+    <figure><img src="media/renders/progress/v1_city_012_crowd_panic045.webp" alt="Crowd panic" loading="lazy"><figcaption>Crowd panic.</figcaption></figure>
+  </div>
+</section>
+
+<section>
+  <div class="sh">
+    <span class="num">04</span>
+    <h2>Animation &amp; camera</h2>
+  </div>
+  <p>Characters are animated on twos and cameras on ones, which is the Spider-Verse rhythm. Motion came from a mix of Kimodo text-to-motion clips, Mixamo clips and hand-built key poses for swings and impacts. Most of the work went into making it read: anticipation, smears, hit-stops, squash on contact, and how much of the frame the hero fills.</p>
+  <div class="grid g2">
+    <figure><img src="media/renders/progress/005_pose_bug.webp" alt="Pose bug" loading="lazy"><figcaption><span class="bad">Bug</span> Legs swinging backwards. Limb bones that point down rotate the opposite way on X.</figcaption></figure>
+    <figure><img src="media/renders/progress/006_pose_fixed.webp" alt="Pose fixed" loading="lazy"><figcaption><span class="good">Fixed</span> A pose test sheet from side and front caught it.</figcaption></figure>
+  </div>
+  <div class="grid g4">
+    <figure><img src="media/renders/progress/v13_s04_01_splat_squash.webp" alt="Billboard squash" loading="lazy"><figcaption>S04: billboard squash.</figcaption></figure>
+    <figure><img src="media/renders/progress/v13_s09_02_contact_beats.webp" alt="Contact beats" loading="lazy"><figcaption>S09: contact beats.</figcaption></figure>
+    <figure><img src="media/renders/progress/v13_s14_06_i4_reverse_rush.webp" alt="Reverse rush" loading="lazy"><figcaption>S14: Kite goes from 5% to 87% of frame height.</figcaption></figure>
+    <figure><img src="media/renders/progress/i16_s12_hit1630.webp" alt="Tail strike" loading="lazy"><figcaption>i16: the tail strike lands on frame 1630.</figcaption></figure>
+  </div>
+  <p class="note">Cameras behave like operators: spring-damped follow and aim, ease in and settle out, rotational shake on impact. An early camera shake moved the camera position and teleported it up to 6 m on hits. A motion audit measured it, and it was replaced.</p>
+</section>
+
+<section>
+  <div class="sh">
+    <span class="num">05</span>
+    <h2>Voice, score &amp; sound</h2>
+  </div>
+  <p>The whole film is timed to Kite's narration: 15 lines recorded with ElevenLabs, each transcribed back to check it. The score was generated as nine separate sections and cut on the timeline, because whole-track scores ignored the moods. Sound effects are real CC0 recordings placed on the film's own event frames (web thwips, footsteps, punches on contact frames), mixed to −14 LUFS and checked for photosensitive flashes at every cut.</p>
+  <div class="audio">
+    <figure><figcaption>V01 · “Alright, city. Deep breath…”</figcaption><audio controls preload="none" src="media/audio/v13/vo_liam/V01.mp3"></audio></figure>
+    <figure><figcaption>Provisional mix · score + VO + SFX</figcaption><audio controls preload="none" src="media/audio/v1/mix.mp3"></audio></figure>
+  </div>
+</section>
+
+<section>
+  <div class="sh">
+    <span class="num">06</span>
+    <h2>The review loop</h2>
+  </div>
+  <p>Quality came from measuring, not from the agent saying it was good. Every cut went through three kinds of check:</p>
+  <div class="cards">
+    <div class="card c1"><h3>Blind critics</h3><p>A fresh agent with no build history watches only the cut and the look bible, then scores eight axes. Self-review was never counted as blind.</p></div>
+    <div class="card c2"><h3>Human notes</h3><p>Dror reviewed cuts in Dailies, his frame-accurate review tool, and left time-coded notes: 19 on i5, 35 on i11, 22 on i13, 13 on i15c. Each one got a fix and a reply.</p></div>
+    <div class="card c3"><h3>Measured audits</h3><p>Per-frame scripts for penetrations, flicker, camera jerk, web stretch, flash safety and loudness. The penetration audit found 56 issues in 2,112 frames.</p></div>
+  </div>
+  <div class="scores">
+    <h3>Blind-critic score, out of 10</h3>
+    <div class="bars">
+      <div style="--v:4"><b>4.0</b><span>V1 animatic A1</span></div>
+      <div style="--v:5"><b>5.0</b><span>V1 animatic A2</span></div>
+      <div style="--v:6"><b>6.0</b><span>V1 render</span></div>
+      <div style="--v:5"><b>5.0</b><span>V1.3 i1</span></div>
+      <div style="--v:5"><b>5.0</b><span>i7</span></div>
+      <div style="--v:5.8"><b>5.8</b><span>i8</span></div>
+      <div style="--v:6"><b>6.0</b><span>i11</span></div>
+    </div>
+    <p class="tiny">Each score comes from a fresh critic, so they're different raters. V1.3 was scored against a much stricter bible than V1, which is why the score dips at i1. A separate 3-model panel (GPT, Gemini, Claude) put V1.2 at 4.2 and V1.3 i3 at 5.0.</p>
+  </div>
+  <div class="grid g2">
+    <figure><img src="media/renders/progress/i16_dailies_notes_sheet.webp" alt="Dailies notes sheet" loading="lazy"><figcaption>Dror's 13 Dailies notes on i15c, as stills in note order.</figcaption></figure>
+    <figure><img src="media/renders/progress/i16_s12s13_check.webp" alt="Fix check" loading="lazy"><figcaption>How a note gets closed: before/after frame checks.</figcaption></figure>
+  </div>
+</section>
+
+<section id="evolution">
+  <div class="sh">
+    <span class="num">07</span>
+    <h2>Every cut, in order</h2>
+  </div>
+  <p>Six days, from the first overnight version to i16. Pick a cut to watch it. The earlier cuts are 480p to keep the page light.</p>
+  <div class="reel" id="reel"></div>
+  <div class="screen small"><video id="reelPlayer" controls playsinline preload="none"></video></div>
+  <p class="cap" id="reelCap"></p>
+</section>
+
+<section id="lessons">
+  <div class="sh">
+    <span class="num">08</span>
+    <h2>What we learned</h2>
+  </div>
+  <div class="lessons">
+    <div><h3>Measure before you fix</h3><p>“Natural motion” turned into numbers: yaw steps per frame, web stretch %, camera jerk in m/s³. The fixes went in, and then the same numbers were measured again.</p></div>
+    <div><h3>The hero has to own the frame</h3><p>The most repeated critic note was that Kite was too small. Percent of frame height became a gate, with a floor of 25%.</p></div>
+    <div><h3>Twos vs ones bites cameras</h3><p>A camera on ones that follows a character on twos jitters at swing speed. The follow cameras lock to the stepped pose.</p></div>
+    <div><h3>Blind review beats self-review</h3><p>The building agent always thinks it's better than it is. A critic with no history, plus a human with time-coded notes, kept it honest.</p></div>
+    <div><h3>Rebuild, don't patch</h3><p>V0 had a mannequin hero, no story and silent stems. V1 was a rebuild from the audit up, and it went from 4 to 6 out of 10 in a day.</p></div>
+    <div><h3>Gates are part of the craft</h3><p>Every delivery passed flash safety (no red flashes, at most 3 per second), loudness (−14 LUFS) and a no-blank-frame check. Renders were split across a Mac and a Windows PC.</p></div>
+  </div>
+</section>
+
+<section class="tools">
+  <div class="sh">
+    <span class="num">09</span>
+    <h2>The toolkit</h2>
+  </div>
+  <ul class="chips">
+    <li>Blender 5.0.1 · EEVEE</li><li>Python build scripts</li><li>Geometry Nodes</li><li>Grease Pencil Line Art</li><li>Tripo3D (image-to-3D)</li><li>Kimodo text-to-motion</li><li>Mixamo clips</li><li>ElevenLabs voice</li><li>CC0 sound effects</li><li>Claude Code + sub-agents</li><li>Dailies review</li><li>motion-kit QA</li>
+  </ul>
+  <a class="cta big" href="journal.html">Read the full production journal →</a>
+  <p class="tiny">The journal is the night-by-night log written while the film was being made: all 96 entries, every bug, every fix, every cut.</p>
+</section>
+
+</main>
+
+<footer>
+  <p>LEAP is an independent fan style study, inspired by <i>Spider-Man: Into the Spider-Verse</i>. Kite and the Glitch are original characters. Not affiliated with or endorsed by Sony Pictures or Marvel.</p>
+  <p>Directed by Dror Lazar · Built by Claude · <a href="https://github.com/drorlazar/spiderverse-leap">Source of this site</a></p>
+</footer>
+
+<div id="lb" hidden><img alt=""><p></p></div>
+
+<script src="site.js"></script>
+</body>
+</html>
